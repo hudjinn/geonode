@@ -1,0 +1,69 @@
+{% extends "geonode-mapstore-client/snippets/brand_navbar.html" %}
+{% load static %}
+{% block extra_style %}
+<link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 16px 'Kanit', sans-serif !important;
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: 1,5;
+        color: #55595c;
+        background-color: #a7a7a7;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+    }
+    i.fa.fa-search {
+        color: #000;
+    }
+    .msgapi .gn-menu .gn-menu-list img {
+        height: 6vh;
+        max-width: 500px;
+        width: auto;
+    }
+    @media (max-width: 768px) {
+        .msgapi .gn-menu .gn-menu-list img {
+            max-width: 150px; /* Um tamanho menor para telas menores */
+        }
+    }
+    #gn-brand-navbar {
+        background-size: 250px 70px;
+        background-position-x: 100px;
+        background: /*url("{% static 'img/bg-sec-final.svg'%}") bottom left no-repeat,*/
+        linear-gradient(to left, #57bfc9, #24A637 65%) left center;
+        font-family: 'Kanit', sans-serif !important;
+        display:flex;
+        flex-wrap:wrap;
+        height: 5rem;
+        box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
+
+    }
+    a#register, a#sign-in {
+        color: white;
+        font-size: 1vw;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        border-radius: 5px; /* Arredonda os cantos */
+        transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    /* Efeito hover */
+    a#register:hover, a#sign-in:hover {
+        background-color: #2dbf50; /* Um tom mais claro de verde para o hover */
+        color: #ffffff; /* Mantém a cor do texto branco */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para efeito de elevação */
+    }
+
+    /* Efeito foco para melhorar a acessibilidade */
+    a#register:focus, a#sign-in:focus {
+        outline: none; /* Remove o contorno padrão */
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* Contorno branco suave para foco */
+    }
+
+</style>
+{% endblock %}
+{% block logo_src %}
+    {% static 'img/FUNCEME-ORGAO-SEC-INVERTIDA-WEB-BRANCA.svg' %}
+{% endblock %}

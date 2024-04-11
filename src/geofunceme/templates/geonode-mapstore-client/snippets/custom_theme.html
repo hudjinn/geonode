@@ -1,0 +1,70 @@
+{% load static %}
+{% block content %}
+
+<link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+
+<style>
+    body {
+        font-family: 'Kanit', sans-serif !important;
+    }
+    .msgapi .gn-menu.gn-primary {
+        background-color: #fff;
+        font-family: 'Kanit', sans-serif !important;
+    }
+
+    .msgapi .btn-primary {
+        background-color: #26A737;
+        border-color: #1f4b16;
+        border-radius: 5px;
+        color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+        margin-right: inherit;
+
+    }
+    .msgapi .btn-primary:hover {
+        background-color: #2dbf50; /* Um tom mais claro de verde */
+        border-color: #26a737;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .msgapi .btn-primary:focus {
+        box-shadow: 0 0 0 2px rgba(38, 167, 55, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3); /* Adiciona um glow externo */
+        outline: none; /* Remove o outline padrão para substituí-lo pelo box-shadow */
+    }
+    .msgapi .btn-primary:active {
+        background-color: #1f4b16; /* Um tom mais escuro para dar sensação de pressionado */
+        border-color: #163812;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25); /* Ajusta a sombra para ser mais sutil quando pressionado */
+        transform: translateY(2px); /* O botão move-se ligeiramente para baixo */
+    }
+
+    .msgapi .gn-hero {
+        position: relative;
+        background: url('static/img/icones_geonode_funceme.png') no-repeat left, lemonchiffon;
+        color: #2dbf50;
+        background-size: 40%;
+    }
+    @media (max-width: 768px) {
+        .msgapi .gn-hero {
+            background: url('static/img/icones_geonode_funceme.png') no-repeat top, lemonchiffon;
+            background-size: 65%;
+        }
+    }
+    nav#gn-topbar {
+        margin-top: -2.5rem;
+        background-color: transparent;
+    }
+</style>
+<div id="gn-hero" class="gn-hero">
+    <div class="jumbotron">
+        <div class="gn-hero-description">
+            <h1>GeoFunceme</h1>
+            <p>Plataforma de compartilhamento de </p>
+        </div>
+        <p class="gn-hero-tools">
+            <!-- Ferramentas ou links adicionais podem ser colocados aqui -->
+        </p>
+    </div>
+    <img src="{% static 'img/bg-bottom-menu.svg' %}" style="width: 100%;">
+</div>
+{% endblock %}
