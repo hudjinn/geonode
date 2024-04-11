@@ -1,7 +1,6 @@
-# geoFUNCEME
-<img src="customizacao_geonode/templates_modificados/img/icones_geonode_funceme.png" width="722" height="200">
+# Geonode
 
-##### O repositório contém uma instância do Geonode já customizada e validada para os padrões da FUNCEME. Abaixo segue a explicação de como foi feita construída a instância. Caso queira apenas levantar o contêiner, siga para 
+##### O repositório contém uma instância do Geonode para FUNCEME. Abaixo segue a explicação de como foi feita construída a instância. Caso queira apenas levantar o contêiner, siga para 
 
 ##### [Criação do Arquivo de Configuração de Ambiente (dotEnv)](#criação-do-arquivo-de-configuração-de-ambiente-dotenv)
 
