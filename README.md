@@ -1,13 +1,10 @@
-# Geonode
+# geoFUNCEME
+<img src="customizacao_geonode/templates_modificados/img/icones_geonode_funceme.png" width="722" height="200">
 
-##### O repositório contém uma instância do Geonode para FUNCEME. Abaixo segue a explicação de como foi feita construída a instância. Caso queira apenas levantar o contêiner, siga para 
-
-##### [Criação do Arquivo de Configuração de Ambiente (dotEnv)](#criação-do-arquivo-de-configuração-de-ambiente-dotenv)
-
-##### e em seguida 
-
-##### [Subindo o Contêiner pela primeira vez](#subindo-o-contêiner-pela-primeira-vez)
-
+**O repositório contém uma instância do Geonode já customizada e validada para os padrões da FUNCEME. Abaixo segue a explicação de como foi feita construída a instância. Caso queira apenas levantar o contêiner, siga para**
+**[Criação do Arquivo de Configuração de Ambiente (dotEnv)](#criação-do-arquivo-de-configuração-de-ambiente-dotenv)**
+**e**
+**[Subindo o Contêiner pela primeira vez](#subindo-o-contêiner-pela-primeira-vez-subindo-o-container)**
 
 # Etapas de Criação da Instância GeoNode do Zero - geoFunceme
 
@@ -44,8 +41,7 @@ django-admin startproject --template=./geonode-project -e py,sh,md,rst,json,yml,
 cd /opt/geonode_custom/geofunceme
 
 python3 create-envfile.py \
-  --hostname geo.funceme.br \
-  --email jefferson.galvao@funceme.br \
+  --hostname geo.funceme.br
 ```
 O `create-envfile.py` aceita os seguintes argumentos:
 
@@ -70,19 +66,25 @@ O `create-envfile.py` aceita os seguintes argumentos:
 
 Para aplicar o idioma (que não vem por padrão no GeoNode) é preciso seguir alguns passos:
 
-##### Criar pasta `locale`
+##### Tradução Django - Copiar a pasta `locale`
 
+Copiar os diretórios e arquivos contidos em `traducao/locale` para a pasta `geofunceme`
 ```bash
-cd geonode_custom/geofunceme/src/geofunceme
-mkdir locale
+cp -r ./geofunceme/customizacao_geonode/traducao/locale ./geofunceme/src/geofunceme/
 ```
+##### Tradução das Dependências - Copiar a pasta `mapstore`
 
-#### Inserir arquivos .po e .mo para o idioma pt_br
-
-Copiar os diretórios e arquivos contidos em `traducao/locale/*` para a pasta `locale`
+Copiar os diretórios e arquivos contidos em `traducao/mapstore` para a pasta `geofunceme/static`
 ```bash
-cp -r ./geofunceme/customizacao_geonode/traducao/locale/* ./geofunceme/src/geofunceme/locale/
+cp -r ./geofunceme/customizacao_geonode/traducao/static/mapstore ./geofunceme/src/geofunceme/static/
 ```
+Sem isso, o MapStore não consegue carregar, não mostrando as camadas.
+
+
+*No caso de não funcionar, copiar para o contêiner Django após construído e levantado*
+Copiar os json da pasta `./geofunceme/customizacao_geonode/traducao/mapstore/*` para dentro do contêiner Django: `/mnt/volumes/statics/static/mapstore/`
+
+
 #### Editar dotEnv
 ```bash
 nano .env
@@ -118,11 +120,13 @@ LANGUAGES = [
 
 #### Mover Estáticos para a pasta
 ```bash
-cp ./geofunceme/customizacao_geonode/templates_modificados/img/* ./geofunceme/src/geofunceme/static/img
+cp ./geofunceme/customizacao_geonode/templates_modificados/img ./geofunceme/src/geofunceme/static/
+
+cp ./geofunceme/customizacao_geonode/templates_modificados/geonode ./geofunceme/src/geofunceme/static/
 ```
-#### Mover templates snippets para a pasta
+#### Mover templates para a pasta
 ```bash
-cp -r ./geofunceme/customizacao_geonode/templates_modificados/geonode-mapstore-client/* ./geofunceme/src/funceme_mapas/templates/geonode-mapstore-client
+cp -r ./geofunceme/customizacao_geonode/templates_modificados/templates ./geofunceme/src/geofunceme/
 ```
 
 ### Subindo o Contêiner pela primeira vez
@@ -161,6 +165,7 @@ docker compose up -d
 ```
 
 **Repita até funcionar**
+**Se o erro persistir, remova as imagens e volumes criados pelo `docker-compose.yml` e tente novamente**
 
 ### Informações adicionais
 
@@ -168,6 +173,7 @@ Diretório contendo as telas front-end no container django:
 ```bash
 cd /usr/local/lib/python3.10/dist-packages/geonode_mapstore_client/templates/geonode-mapstore-client/snippets/
 ```
+
 ## Autores
 
 - [Jefferson Sant'ana Galvão](https://gitlab-ce.com/jefferson.galvao) - Geógrafo, Analista de Sistemas. Especialista em Sistema de Informação Espacial (Geoprocessamento).

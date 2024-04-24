@@ -1,0 +1,224 @@
+{% load static %}
+{% load client_version %}
+<!DOCTYPE html>
+<html class="msgapi">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/fonts/montserrat.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3pVb3yA9PFhgb7AKt8W6jYOM8iHxVl8HwTZa8u4CpJH4wX4pTtFiQ6Vpdc" crossorigin="anonymous">
+        <link href="{% static 'mapstore/dist/themes/geonode.css' %}?{% client_version %}" rel="stylesheet" />
+        <title>{{ SITE_NAME }}</title>
+        <link rel="shortcut icon" href="{% static 'geonode/img/favicon.ico' %}" />
+        {% include './geonode-mapstore-client/snippets/loader_style.html' %}
+
+        {% block custom_theme %}
+            {% include './geonode-mapstore-client/snippets/custom_theme.html' %}
+        {% endblock %}
+
+        {% block extra_style %}
+        {% endblock %}
+
+        {% block extra_head %}
+        {% endblock %}
+    </head>
+    <body class="msgapi ms2" data-ms2-container="ms2">
+        <div class="gn-page-wrapper {% if request.user_agent.is_mobile %}gn-mobile{% else %}gn-desktop{% endif %}">
+            <div class="gn-theme gn-homepage">
+                {% include './geonode-mapstore-client/_geonode_config.html' %}
+                {% block header %}
+                    {% include './geonode-mapstore-client/snippets/header.html' with show_hero=True %}
+                {% endblock %}
+                {% block content %}
+                <!-- Substituição do MapStore por banners para acesso rápido -->
+                
+                <div class="custom-divider">
+                    <h1 class="container-category-text" style="color: #24A637">POR TIPO DE PRODUTO</h1>
+                </div>
+
+                <div class="container mt-3">
+                    <!-- Banner contendo os tipos de produtos -->
+                    <div class="row">
+						<!-- Banner Camadas -->
+                        <div class="col-md-4 mb-3">
+                            <div class="image-container position-relative">
+                                <a href="http://geo.funceme.br/catalogue/#/?f=dataset" class="image-link">
+                                    <img class="img-fluid" src="{% static 'img/camadas-banner.png' %}" alt="Camadas">
+                                </a>
+                                <a href="http://geo.funceme.br/catalogue/#/?f=dataset" class="btn btn-primary overlay-button">Camadas</a>
+                            </div>
+                            <div class="content-below-image">
+                                <p class="text-description">Dados geoespaciais em formato de vetor ou raster publicados pela FUNCEME e parceiros.</p>
+                            </div>
+                        </div>
+						<!-- Banner Mapas -->
+                        <div class="col-md-4 mb-3">
+                            <div class="image-container position-relative">
+                                <a href="http://geo.funceme.br/catalogue/#/?f=map" class="image-link">
+                                    <img class="img-fluid" src="{% static 'img/mapas-banner.png' %}" alt="Mapas">
+                                </a>
+                                <a href="http://geo.funceme.br/catalogue/#/?f=map" class="btn btn-primary overlay-button">Mapas</a>
+                            </div>
+                            <div class="content-below-image">
+                                <p class="text-description">Lista de mapas publicados a partir das camadas e estilos disponíveis na Plataforma.</p>
+                            </div>
+                        </div>
+						<!-- Banner Documentos -->
+                        <div class="col-md-4 mb-3">
+                            <div class="image-container position-relative">
+                                <a href="http://geo.funceme.br/catalogue/#/search/?f=document" class="image-link">
+                                    <img class="img-fluid" src="{% static 'img/documentos-banner.png' %}" alt="Documentos">
+                                </a>
+                                <a href="http://geo.funceme.br/catalogue/#/search/?f=document" class="btn btn-primary overlay-button">Documentos</a>
+                            </div>
+                            <div class="content-below-image">
+                                <p class="text-description">Publicação de texto e tabelas associados aos produtos geoespaciais.</p>
+                            </div>
+                        </div>
+					</div>
+                </div>
+
+                <!-- Parte ignorada mas que deve ser mantida -->
+                {% endblock %}
+                {% comment %}
+                <!-- Parte que deve ser implementada posteriormente -->
+                <div class="custom-divider">
+                    <h1>POR CATEGORIA</h1>
+                </div><div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="..." class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>First slide label</h5>
+                          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>Second slide label</h5>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                          <h5>Third slide label</h5>
+                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+                <div class="custom-divider">
+                    <h1>POR GERÊNCIA</h1>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <!-- Bootstrap card component for 'Meio Ambiente' -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Meio Ambiente</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <!-- Bootstrap card component for 'Meio Ambiente' -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Recursos Hídricos</h5>
+                                    <!-- other content -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <!-- Bootstrap card component for 'Meio Ambiente' -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Meteorologia</h5>
+                                    <!-- other content -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% block container %}
+                    <div id="ms-container">
+                        <div class="gn-main-event-container">
+                            <div class="gn-main-event-content">
+                                <div class="gn-main-loader"></div>
+                                <div class="gn-main-event-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endblock %}
+
+                <script>
+                    window.addEventListener('mapstore:ready', function(event) {
+                        const catalogPagePath = window.__GEONODE_CONFIG__.localConfig.geoNodeSettings.catalogPagePath;
+                        const pagePath = catalogPagePath ? catalogPagePath : '/catalogue/';
+                        const msAPI = event.detail;
+                        msAPI.setPluginsConfig([
+                            {
+                                name: 'FeaturedResourcesGrid',
+                                cfg: {
+                                    targetSelector: '#gn-home-featured-resources-grid',
+                                    pagePath: pagePath
+                                }
+                            },
+                            {
+                                name: 'ResourcesGrid',
+                                cfg: {
+                                    targetSelector: '#gn-home-resources-grid',
+                                    containerSelector: '#gn-home-resources-grid',
+                                    pagination: false,
+                                    pagePath: pagePath,
+                                    disableFilters: true,
+                                    disableDetailPanel: true,
+                                    enableGeoNodeCardsMenuItems: true
+                                }
+                            },
+                            { name: 'SaveAs', cfg: { closeOnSave: true } },
+                            { name: 'DeleteResource' },
+                            { name: 'DownloadResource' },
+                            { name: 'Notifications' }
+                        ]);
+                    });
+                </script>
+                {% block ms_scripts %}
+                    <script id="gn-script" src="{% static 'mapstore/dist/js/gn-components.js' %}?{% client_version %}"></script>
+                {% endblock %}
+                {% endcomment %}
+                <!-- FIM DA Parte ignorada mas que deve ser mantida -->
+
+                {% block footer %}
+                    {% include './geonode-mapstore-client/snippets/footer.html' %}
+                {% endblock %}
+                {% block scripts %}
+                    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doPaGxV4oAK5sC3Jg9S+qF6soSDLDOWNMuhyl4ab4dhoMbrtKhi8N" crossorigin="anonymous"></script>
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+                    <script type="text/javascript">
+                        // enable dropdown functionalities
+                        $('.dropdown-toggle').dropdown();
+                    </script>
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
