@@ -1,8 +1,44 @@
 {
-    "locale": "pt-BR",
+    "locale": "pt-br",
     "messages": {
         "gnhome": {
-            "view": ""
+            "dataset": "Camada",
+            "datasets": "Camadas",
+            "viewDataset": "Visualizar Camada",
+            "viewDatasets": "Visualizar Camadas",
+            "uploadLayer": "Carregar Camada",
+            "uploadDataset": "Carregar Camadas"
+        },
+        "gnviewer": {
+            "editLayerStyle": "Editar estilo da Camada",
+            "backToDataset": "< Voltar para a Camada",
+            "stylesFirstClone": "As alterações feitas nos estilos serão aplicadas apenas à camada atual em seu mapa, e não ao conjunto de dados originais.",
+            "addLayer": "Adicionar Camada",
+            "uploadDataset": "Carregar um conjunto de dados (Camadas)",
+            "invalidBbox": "Extensão da Camada é inválida",
+            "invalidBboxMsg": "A extensão da Camada excede a extensão máxima do WGS84 [-180, -90, 180, 90]",
+            "embeddataset": "Incorporar este conjunto de dados",
+            "legend": "Legenda",
+            "viewInfo": "Ver Informações",
+            "locations": "Localização",
+            "boundingBox": "BBox",
+            "minLat": "Latitude Mínima",
+            "maxLat": "Latitude Máxima",
+            "minLon": "Longitude Mínima",
+            "maxLon": "Longitude Máxima",
+            "center": "Central",
+            "centerLat": "Latitude Central",
+            "centerLon": "Longitude Central",
+            "publication": "Publicação",
+            "sourceType": "Tipo de Recurso",
+            "linkedResources": {
+                "label": "Rótulo",
+                "usedBy": "Utilizado em:",
+                "uses": "Utiliza:"
+            },
+            "iso": "Metadados Formato ISO",
+            "dublinCore": "Metadados Formato Dublin Core",
+            "thisPage": "Esta página"
         }
     }
 }

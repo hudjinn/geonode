@@ -168,3 +168,8 @@ if LDAP_ENABLED and "geonode_ldap" not in INSTALLED_APPS:
 
 # Add your specific LDAP configuration after this comment:
 # https://docs.geonode.org/en/master/advanced/contrib/#configuration
+MAPSTORE_TRANSLATIONS_PATH = [
+    '/static/mapstore/ms-translations',
+    '/static/mapstore/gn-translations',
+    '/static/mapstore/project-translations'
+]
